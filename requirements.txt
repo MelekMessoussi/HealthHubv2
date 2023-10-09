@@ -28,8 +28,8 @@ glfw
 pyopengl
 imageio-ffmpeg
 pyspng
-stylegan2_pytorch
-aimrocks
+# stylegan2_pytorch
+# aimrocks
 albumentations
 nibabel
 # flask_mysqldb
