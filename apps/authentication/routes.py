@@ -18,9 +18,7 @@ from apps.authentication.models import Users
 from apps.authentication.util import verify_pass
 
 
-@blueprint.route('/')
-def route_default():
-    return redirect(url_for('authentication_blueprint.login'))
+
 
 
 # Login & Registration
@@ -28,68 +26,70 @@ def route_default():
 @blueprint.route('/login', methods=['GET', 'POST'])
 def login():
     login_form = LoginForm(request.form)
-    if 'login' in request.form:
-
-        # read form data
-        username = request.form['username']
-        password = request.form['password']
-
-        # Locate user
-        user = Users.query.filter_by(username=username).first()
-
-        # Check the password
-        if user and verify_pass(password, user.password):
-
-            login_user(user)
-            return redirect(url_for('authentication_blueprint.route_default'))
-
-        # Something (user or pass) is not ok
-        return render_template('accounts/login.html',
-                               msg='Wrong user or password',
-                               form=login_form)
-
-    if not current_user.is_authenticated:
-        return render_template('accounts/login.html',
-                               form=login_form)
-    return redirect(url_for('home_blueprint.index'))
-
-
-@blueprint.route('/register', methods=['GET', 'POST'])
-def register():
     create_account_form = CreateAccountForm(request.form)
-    if 'register' in request.form:
 
-        username = request.form['username']
-        email = request.form['email']
+    if request.method == 'POST':
+        if 'register' in request.form:
+            # Handle registration form (form2)
+            username = request.form['username']
+            email = request.form['email']
 
-        # Check usename exists
-        user = Users.query.filter_by(username=username).first()
-        if user:
-            return render_template('accounts/register.html',
-                                   msg='Username already registered',
-                                   success=False,
-                                   form=create_account_form)
+            # Check username exists
+            user_username = Users.query.filter_by(username=username).first()
+            if user_username:
+                return render_template('login.html',
+                                       form1=create_account_form,
+                                       form2=login_form,
+                                       msg='Username already registered',
+                                       success=False)
 
-        # Check email exists
-        user = Users.query.filter_by(email=email).first()
-        if user:
-            return render_template('accounts/register.html',
-                                   msg='Email already registered',
-                                   success=False,
-                                   form=create_account_form)
+            # Check email exists
+            user_email = Users.query.filter_by(email=email).first()
+            if user_email:
+                return render_template('login.html',
+                                       form1=create_account_form,
+                                       form2=login_form,
+                                       msg='Email already registered',
+                                       success=False)
 
-        # else we can create the user
-        user = Users(**request.form)
-        db.session.add(user)
-        db.session.commit()
+            # Create the user
+            user = Users(**request.form)
+            db.session.add(user)
+            db.session.commit()
 
-        return render_template('accounts/register.html',
-                               msg='User created please <a href="/login">login</a>',
-                               success=True,
-                               form=create_account_form)
+            return render_template('login.html',
+                                   form1=create_account_form,
+                                   form2=login_form,
+                                   msg='User created, please login',
+                                   success=True)
 
-    else:
-        return render_template('accounts/register.html', form=create_account_form)
+        elif 'login' in request.form:
+            # Handle login form (form1)
+            username = request.form['username']
+            password = request.form['password']
+
+            # Locate user
+            user = Users.query.filter_by(username=username).first()
+
+            # Check the password
+            if user and verify_pass(password, user.password):
+                login_user(user)
+                return redirect(url_for('home_blueprint.Dashboard'))
+            else:
+                # Something (user or pass) is not ok
+                return render_template('login.html',
+                                       form1=create_account_form,
+                                       form2=login_form,
+                                       msg='Wrong user or password',
+                                       success=False)
+
+    elif not current_user.is_authenticated:
+        # Show login form by default
+        return render_template('login.html',
+                               form1=create_account_form,
+                               form2=login_form)
+
+    return redirect(url_for('home_blueprint.Dashboard'))
 
 
 @blueprint.route('/logout')

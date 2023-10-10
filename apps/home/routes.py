@@ -61,9 +61,8 @@ G.to(device)
 
 
 
-
-API_URL = "https://api-inference.huggingface.co/models/yahyasmt/brain_tumor_2"
-headers = {"Authorization": "Bearer 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"}
+API_URL = "https://api-inference.huggingface.co/models/yahyasmt/brain-tumor-3"
+headers = {"Authorization": "Bearer xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"}
 
 
 app = Flask(__name__)
@@ -80,14 +79,22 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
+@blueprint.route('/')
+def route_default():
+    return render_template('index.html', segment='index')
 
 @blueprint.route('/index',methods=['GET', 'POST'])
-@login_required
+
 def index():
-    return render_template('home/index.html', segment='index')
+    return render_template('index.html', segment='index')
+
+@blueprint.route('/dashboard',methods=['GET', 'POST'])
+@login_required
+def Dashboard():
+    return render_template('/dashboard/index.html')
 
 #########################################################################################
-@blueprint.route('/indeximage',methods=['GET', 'POST'])
+@blueprint.route('/MRI_Generation',methods=['GET', 'POST'])
 @login_required
 def indeximage():
     if request.method == "POST":
@@ -96,10 +103,10 @@ def indeximage():
         image_bytes = query({
             "inputs": prompt,
         })
-        with open("./apps/static/assets/mdl/aa.jpeg", "wb") as image_file:
+        with open("./apps/static/assets_old/mdl/aa.jpeg", "wb") as image_file:
             image_file.write(image_bytes)
 
-    return render_template('home/indexImage.html')
+    return render_template('/dashboard/MRI_Generation.html')
 
 ########################################################################################
 @blueprint.route('/predict', methods=['POST'])
@@ -390,7 +397,7 @@ def mrithreed():
 
 
 @blueprint.route('/<template>')
-@login_required
+
 def route_template(template):
 
     try:
@@ -405,10 +412,13 @@ def route_template(template):
         return render_template("home/" + template, segment=segment)
 
     except TemplateNotFound:
-        return render_template('home/page-404.html'), 404
+        return render_template('404.html'), 404
 
     except:
         return render_template('home/page-500.html'), 500
+
+
+
 
 
 # Helper - Extract current page name from request
