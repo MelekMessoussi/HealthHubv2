@@ -95,7 +95,6 @@ def Dashboard():
 
 #########################################################################################
 @blueprint.route('/MRI_Generation',methods=['GET', 'POST'])
-@login_required
 def indeximage():
     if request.method == "POST":
         prompt = request.form["input-text"]
@@ -139,11 +138,7 @@ def predict(Seed, noise_mode, truncation_psi):
     img = (img.permute(0, 2, 3, 1) * 127.5 + 128).clamp(0, 255).to(torch.uint8)
     return (PIL.Image.fromarray(img[0].cpu().numpy()[:, :, 0])).resize((512, 512))
 
-@blueprint.route('/brain',methods=['GET'])
-@login_required
-def ganbrain():
-    return render_template('home/Ganbrain.html', segment='index')
-    
+
 
 
 
@@ -198,7 +193,7 @@ def upload_file():
         fig.update_layout(scene=dict(aspectmode="data"))
         plot_div = fig.to_html(full_html=False)
 
-        return render_template('home/result.html', plot_div=plot_div)
+        return render_template('dashboard/result.html', plot_div=plot_div)
 
     return redirect(request.url)
 
@@ -212,7 +207,7 @@ def uploaded_file(filename):
 @blueprint.route('/3D')
 @login_required
 def ThreeD():
-    return render_template('home/3D.html')
+    return render_template('dashboard/3D.html')
 
 
 @blueprint.route('/chat')

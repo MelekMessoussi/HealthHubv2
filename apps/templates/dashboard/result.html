@@ -1,4 +1,18 @@
+<!--
+=========================================================
+* Material Dashboard 2 - v3.0.0
+=========================================================
 
+* Product Page: https://www.creative-tim.com/product/material-dashboard
+* Copyright 2021 Creative Tim (https://www.creative-tim.com)
+* Licensed under MIT (https://www.creative-tim.com/license)
+
+* Coded by Creative Tim
+
+=========================================================
+
+* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+-->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -74,7 +88,7 @@
           <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">MRI to 3D visualization</h6>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="./pages/virtual-reality.html">
+          <a class="nav-link text-white " href="/3D">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">view_in_ar</i>
             </div>
@@ -132,169 +146,170 @@
       </div>
     </div>
   </aside>
-  <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
-    <div>
-    
-   
-    <div class="container-fluid px-2 px-md-4">
-      <div class="page-header min-height-300 border-radius-xl mt-4" style="background-image: url('https://images.unsplash.com/photo-1531512073830-ba890ca4eba2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');">
-        <span class="mask opacity-5"></span>
-        <h1 style="color: white; padding-left: 20%">MRI Brain Tumor Generation
-        </h1>
-      </div>
-      <div class="row">
-        <div class="col-md-6 mt-4">
-          <div class="card">
-            <div class="card-header pb-0 px-3">
+  <div class="main-content position-relative bg-gray-100 max-height-vh-100 h-100">
+    <!-- Navbar -->
+    <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" navbar-scroll="true">
+      <div class="container-fluid py-1 px-3">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+            <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Pages</a></li>
+            <li class="breadcrumb-item text-sm text-dark active" aria-current="page">MRI Brain Tumor Generation</li>
+          </ol>
+          <h6 class="font-weight-bolder mb-0">MRI Brain Tumor Generation</h6>
+        </nav>
+        <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
+          <div class="ms-md-auto pe-md-3 d-flex align-items-center">
+            <div class="input-group input-group-outline">
+              <label class="form-label">Type here...</label>
+              <input type="text" class="form-control">
             </div>
-            <div class="card-body pt-4 p-3">
-                <div>
-                  <div >
-                    <div class="justify-content-center">
-                      <h3 class="text-center">Generate a brain tumor MRI</h3>
-                      <form  action="/MRI_Generation" role="form" method="POST" >
-                        <div class="card-body">
-                          
-                          <div class="mb-4">
-                            <!-- <label>Enter a Prompt:</label> -->
-                            <div class="input-group">
-                              <input type="text" id="input-text" name="input-text" required class="form-control" placeholder="Enter a Prompt:" >
-                            </div>
-                          </div>
-                          <div class="row">
-                            <div class="col-md-12">
-                              <button type="submit" class="btn bg-gradient-dark w-100">Generate Image</button>
-                            </div>
-                          </div>
-                        </div>
-                      </form>
+          </div>
+          <ul class="navbar-nav  justify-content-end">
+            <li class="nav-item d-flex align-items-center">
+              <a href="javascript:;" class="nav-link text-body font-weight-bold px-0">
+                <i class="fa fa-user me-sm-1"></i>
+                <span class="d-sm-inline d-none">Sign In</span>
+              </a>
+            </li>
+            <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
+              <a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav">
+                <div class="sidenav-toggler-inner">
+                  <i class="sidenav-toggler-line"></i>
+                  <i class="sidenav-toggler-line"></i>
+                  <i class="sidenav-toggler-line"></i>
+                </div>
+              </a>
+            </li>
+            <li class="nav-item px-3 d-flex align-items-center">
+              <a href="javascript:;" class="nav-link text-body p-0">
+                <i class="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>
+              </a>
+            </li>
+            <li class="nav-item dropdown pe-2 d-flex align-items-center">
+              <a href="javascript:;" class="nav-link text-body p-0" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="fa fa-bell cursor-pointer"></i>
+              </a>
+              <ul class="dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4" aria-labelledby="dropdownMenuButton">
+                <li class="mb-2">
+                  <a class="dropdown-item border-radius-md" href="javascript:;">
+                    <div class="d-flex py-1">
+                      <div class="my-auto">
+                        <img src="/static/assets_d/img/team-2.jpg" class="avatar avatar-sm  me-3 ">
+                      </div>
+                      <div class="d-flex flex-column justify-content-center">
+                        <h6 class="text-sm font-weight-normal mb-1">
+                          <span class="font-weight-bold">New message</span> from Laur
+                        </h6>
+                        <p class="text-xs text-secondary mb-0">
+                          <i class="fa fa-clock me-1"></i>
+                          13 minutes ago
+                        </p>
+                      </div>
                     </div>
-                  </div>
-                </div>
-              <div class="justify-content-center">
-              <img src="/static/assets_old/mdl/aa.jpeg" height="300px" width="300px" style="margin-left: 24%;">
-              </div>
-              <div class=" cadre2 w-100" style="margin-left: 40%;">
-                <br>
-              <a href="/static/assets_old/mdl/aa.jpeg" download>
-                <button class="btn bg-gradient-dark"><i class="fa fa-download"></i> Download</button></a>
-            </div>
-          </div>
-        </div>
-        
-      </div>
-
-      <div class="col-md-6 mt-4">
-        <div class="card">
-          <div class="card-header pb-0 px-3">
-          </div>
-          <div class="card-body pt-4 p-3">
-              <div>
-                <div >
-                  <div class="justify-content-center">
-                    <h3 class="text-center">Generate a normal brain MRI</h3>
-                    <form id="prediction-form">
-                      Seed: <input type="range" id="Seed" name="Seed" class="range w-full appearance-none transition rounded h-4 svelte-951xr6" min="0" max="65536" step="100"><br>
-        
-                Noise Mode: 
-                <input type="radio" id="const" name="noise_mode" value="const" checked style="margin-right: 5px;">
-                <label for="const">const</label>
-                <input type="radio" id="random" name="noise_mode" value="random" style="margin-right: 5px;">
-                <label for="random">random</label>
-                <input type="radio" id="none" name="noise_mode" value="none" style="margin-right: 5px;">
-                <label for="none">none</label><br>
-        
-                Truncation psi: <input type="range" id="truncation_psi" name="truncation_psi" step="0.05" min="0" max="2" value="1" class="range w-full appearance-none transition rounded h-4 svelte-951xr6"><br>
-        
-                <input class="btn bg-gradient-dark w-100" type="submit" value="Generate">
-        
-                  </form>
-                  <br>
-          <img id="result_image"  alt="Generated Image" height="300px" width="300px" style="margin-left: 24%;">
-          <div class=" cadre2 w-100" style="margin-left: 40%;">
-              <br>
-              <button id="download_button" class="btn bg-gradient-dark"><i class="fa fa-download"></i> Download</button>
-            </div>
-          <script>
-            // JavaScript to handle form submission and display the result image
-            document.getElementById("prediction-form").addEventListener("submit", function (event) {
-                event.preventDefault();
-                const formData = new FormData(event.target);
-                fetch("/predict", {
-                    method: "POST",  // Ensure that the method is set to POST
-                    body: formData,
-                })
-                .then((response) => response.json())
-                .then((data) => {
-                    document.getElementById("result_image").src = "data:image/png;base64," + data.result_image;
-                });
-            });
-            const resultImage = document.getElementById('result_image');
-        const downloadButton = document.getElementById('download_button');
-
-        // Add an event listener to the download button
-        downloadButton.addEventListener('click', function() {
-            // Create a temporary anchor element
-            const downloadLink = document.createElement('a');
-            downloadLink.href = resultImage.src;
-            downloadLink.download = 'downloaded-image.jpg'; // Set the desired file name
-            downloadLink.style.display = 'none';
-
-            // Append the anchor to the body and trigger the click event
-            document.body.appendChild(downloadLink);
-            downloadLink.click();
-
-            // Remove the anchor element from the DOM
-            document.body.removeChild(downloadLink);
-          });
-
-          // Set the image source dynamically (replace 'your-image-url.jpg' with the actual image URL)
-          const imageUrl = 'your-image-url.jpg'; // Replace with your image URL
-          resultImage.src = imageUrl;
-        </script>
-                  </div>
-                </div>
-              </div>
-           
-        </div>
-      </div>
-      
-    </div>
-      <footer class="footer py-4  ">
-        <div class="container-fluid">
-          <div class="row align-items-center justify-content-lg-between">
-            <div class="col-lg-6 mb-lg-0 mb-4">
-              <div class="copyright text-center text-sm text-muted text-lg-start">
-                © <script>
-                  document.write(new Date().getFullYear())
-                </script>,
-                made with <i class="fa fa-heart"></i> by
-                <a href="https://www.creative-tim.com" class="font-weight-bold" target="_blank">Creative Tim</a>
-                for a better web.
-              </div>
-            </div>
-            <div class="col-lg-6">
-              <ul class="nav nav-footer justify-content-center justify-content-lg-end">
-                <li class="nav-item">
-                  <a href="https://www.creative-tim.com" class="nav-link text-muted" target="_blank">Creative Tim</a>
+                  </a>
                 </li>
-                <li class="nav-item">
-                  <a href="https://www.creative-tim.com/presentation" class="nav-link text-muted" target="_blank">About Us</a>
+                <li class="mb-2">
+                  <a class="dropdown-item border-radius-md" href="javascript:;">
+                    <div class="d-flex py-1">
+                      <div class="my-auto">
+                        <img src="/static/assets_d/img/small-logos/logo-spotify.svg" class="avatar avatar-sm bg-gradient-dark  me-3 ">
+                      </div>
+                      <div class="d-flex flex-column justify-content-center">
+                        <h6 class="text-sm font-weight-normal mb-1">
+                          <span class="font-weight-bold">New album</span> by Travis Scott
+                        </h6>
+                        <p class="text-xs text-secondary mb-0">
+                          <i class="fa fa-clock me-1"></i>
+                          1 day
+                        </p>
+                      </div>
+                    </div>
+                  </a>
                 </li>
-                <li class="nav-item">
-                  <a href="https://www.creative-tim.com/blog" class="nav-link text-muted" target="_blank">Blog</a>
-                </li>
-                <li class="nav-item">
-                  <a href="https://www.creative-tim.com/license" class="nav-link pe-0 text-muted" target="_blank">License</a>
+                <li>
+                  <a class="dropdown-item border-radius-md" href="javascript:;">
+                    <div class="d-flex py-1">
+                      <div class="avatar avatar-sm bg-gradient-secondary  me-3  my-auto">
+                        <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                          <title>credit-card</title>
+                          <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                            <g transform="translate(-2169.000000, -745.000000)" fill="#FFFFFF" fill-rule="nonzero">
+                              <g transform="translate(1716.000000, 291.000000)">
+                                <g transform="translate(453.000000, 454.000000)">
+                                  <path class="color-background" d="M43,10.7482083 L43,3.58333333 C43,1.60354167 41.3964583,0 39.4166667,0 L3.58333333,0 C1.60354167,0 0,1.60354167 0,3.58333333 L0,10.7482083 L43,10.7482083 Z" opacity="0.593633743"></path>
+                                  <path class="color-background" d="M0,16.125 L0,32.25 C0,34.2297917 1.60354167,35.8333333 3.58333333,35.8333333 L39.4166667,35.8333333 C41.3964583,35.8333333 43,34.2297917 43,32.25 L43,16.125 L0,16.125 Z M19.7083333,26.875 L7.16666667,26.875 L7.16666667,23.2916667 L19.7083333,23.2916667 L19.7083333,26.875 Z M35.8333333,26.875 L28.6666667,26.875 L28.6666667,23.2916667 L35.8333333,23.2916667 L35.8333333,26.875 Z"></path>
+                                </g>
+                              </g>
+                            </g>
+                          </g>
+                        </svg>
+                      </div>
+                      <div class="d-flex flex-column justify-content-center">
+                        <h6 class="text-sm font-weight-normal mb-1">
+                          Payment successfully completed
+                        </h6>
+                        <p class="text-xs text-secondary mb-0">
+                          <i class="fa fa-clock me-1"></i>
+                          2 days
+                        </p>
+                      </div>
+                    </div>
+                  </a>
                 </li>
               </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- End Navbar -->
+    <div class="container-fluid px-2 px-md-4">
+      <div class="page-header min-height-300 border-radius-xl mt-4" style="background-image: url('https://images.unsplash.com/photo-1531512073830-ba890ca4eba2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');">
+        <span class="mask  bg-gradient-primary  opacity-6"></span>
+      </div>
+      <div class="card card-body mx-3 mx-md-4 mt-n6">
+        <div class="row gx-4 mb-2">
+          {{ plot_div|safe }}
+
+        
+        
+        </div>
+        
+      </div>
+    </div>
+    <footer class="footer py-4  ">
+      <div class="container-fluid">
+        <div class="row align-items-center justify-content-lg-between">
+          <div class="col-lg-6 mb-lg-0 mb-4">
+            <div class="copyright text-center text-sm text-muted text-lg-start">
+              © <script>
+                document.write(new Date().getFullYear())
+              </script>,
+              made with <i class="fa fa-heart"></i> by
+              <a href="https://www.creative-tim.com" class="font-weight-bold" target="_blank">Creative Tim</a>
+              for a better web.
             </div>
           </div>
+          <div class="col-lg-6">
+            <ul class="nav nav-footer justify-content-center justify-content-lg-end">
+              <li class="nav-item">
+                <a href="https://www.creative-tim.com" class="nav-link text-muted" target="_blank">Creative Tim</a>
+              </li>
+              <li class="nav-item">
+                <a href="https://www.creative-tim.com/presentation" class="nav-link text-muted" target="_blank">About Us</a>
+              </li>
+              <li class="nav-item">
+                <a href="https://www.creative-tim.com/blog" class="nav-link text-muted" target="_blank">Blog</a>
+              </li>
+              <li class="nav-item">
+                <a href="https://www.creative-tim.com/license" class="nav-link pe-0 text-muted" target="_blank">License</a>
+              </li>
+            </ul>
+          </div>
         </div>
-      </footer>
-    </div>
-  </main>
-</div>
+      </div>
+    </footer>
+  </div>
   <div class="fixed-plugin">
     <a class="fixed-plugin-button text-dark position-fixed px-3 py-2">
       <i class="material-icons py-2">settings</i>
@@ -340,12 +355,6 @@
         </div>
         <p class="text-sm d-xl-none d-block mt-2">You can change the sidenav type just on desktop view.</p>
         <!-- Navbar Fixed -->
-        <div class="mt-3 d-flex">
-          <h6 class="mb-0">Navbar Fixed</h6>
-          <div class="form-check form-switch ps-0 ms-auto my-auto">
-            <input class="form-check-input mt-1 ms-auto" type="checkbox" id="navbarFixed" onclick="navbarFixed(this)">
-          </div>
-        </div>
         <hr class="horizontal dark my-3">
         <div class="mt-2 d-flex">
           <h6 class="mb-0">Light / Dark</h6>
