@@ -269,11 +269,17 @@
       </div>
       <div class="card card-body mx-3 mx-md-4 mt-n6">
         <div class="row gx-4 mb-2">
-          {{ plot_div|safe }}
-
-        
-        
-        </div>
+          <h1>Generate 3D Scan</h1>
+          <form action="/3dtotal" method="POST" enctype="multipart/form-data">
+              <input type="file" name="file"  >
+      
+              <input type="submit" value="Generate 3D Scan">
+          </form>
+      
+          <!-- Display the 3D scan plot here -->
+          {% if plot %}
+              {{ plot | safe }}
+          {% endif %}
         
       </div>
     </div>

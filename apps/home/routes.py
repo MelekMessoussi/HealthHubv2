@@ -62,7 +62,7 @@ G.to(device)
 
 
 API_URL = "https://api-inference.huggingface.co/models/yahyasmt/brain-tumor-3"
-headers = {"Authorization": "Bearer xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"}
+headers = {"Authorization": "Bearer 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"}
 
 
 app = Flask(__name__)
@@ -382,10 +382,10 @@ def mrithreed():
             fig = viewer.get_3d_scan(0, 't1')
 
             # Render the HTML template with the generated 3D scan
-            return render_template('home/resulttotal3d.html', plot=plotly.offline.plot(fig, output_type='div'))
+            return render_template('dashboard/resulttotal3d.html', plot=plotly.offline.plot(fig, output_type='div'))
 
     # Render the HTML form when the page is first loaded
-    return render_template('home/resulttotal3d.html', plot=None)
+    return render_template('dashboard/resulttotal3d.html', plot=None)
 ############################################################################################
 
 
