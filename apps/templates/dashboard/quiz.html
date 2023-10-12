@@ -269,7 +269,22 @@
       </div>
       <div class="card card-body mx-3 mx-md-4 mt-n6">
         <div class="row gx-4 mb-2">
-          {{ plot_div|safe }}
+          <div class="card-body">
+            <form method="post" action="/submit_answers">
+                <input type="hidden" name="num_questions" value="{{ questions|length }}">
+                {% for i in range(questions|length) %}
+                    <div class="mb-4">
+                        <div class="form-group">
+                            <label class="h6">Question {{ i + 1 }}: {{ questions[i] }}</label>
+                            <input type="hidden" name="correct_answers" value="{{ correct_answers[i] }}">
+                            <input type="text" class="form-control" placeholder="Your answer" name="user_answer{{ i }}">
+                        </div>
+                    </div>
+                {% endfor %}
+                <input type="submit" class="btn btn-primary" value="Submit">
+            </form>
+        </div>
+
 
         
         

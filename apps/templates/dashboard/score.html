@@ -269,7 +269,26 @@
       </div>
       <div class="card card-body mx-3 mx-md-4 mt-n6">
         <div class="row gx-4 mb-2">
-          {{ plot_div|safe }}
+          <div class="card-body">
+            <div class="row align-items-center d-flex justify-content-center">
+              <h3 class="h3 text-center">Quiz Score  </h3>
+              <h2 class="h2 text-center"> {{ score }}/{{ total_questions }} </h2>
+              <h4 class="h4 text-center">  Correct Answers</h4>
+              <div class="col-12 mb-4">
+                  <div class="card border-light shadow-sm components-section align-items-center d-flex justify-content-center">
+                      <div class="card-body align-items-center d-flex justify-content-center">
+                          
+                          <ul>
+                              {% for i in range(total_questions) %}
+                                  <li>Question {{ i + 1 }}: {{ correct_answers[i] }}</li>
+                              {% endfor %}
+                          </ul>
+                      </div>
+                  </div>
+              </div>
+          </div>
+        </div>
+
 
         
         

@@ -39,10 +39,10 @@ import numpy as np
 import plotly.graph_objects as go
 import numpy as np
 
-
-
-
-
+from subjective import SubjectiveTest
+from objective import ObjectiveTest
+#import nltk
+#nltk.download("all")
 
 # os.system("git clone https://github.com/NVlabs/stylegan3")
 
@@ -62,7 +62,7 @@ G.to(device)
 
 
 API_URL = "https://api-inference.huggingface.co/models/yahyasmt/brain-tumor-3"
-headers = {"Authorization": "Bearer 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"}
+headers = {"Authorization": "Bearer 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"}
 
 
 app = Flask(__name__)
@@ -387,7 +387,136 @@ def mrithreed():
     # Render the HTML form when the page is first loaded
     return render_template('dashboard/resulttotal3d.html', plot=None)
 ############################################################################################
+@blueprint.route('/quiz')
+@login_required
+def quizdef():
+    return render_template('dashboard/quizindex.html')
 
+@blueprint.route('/test_generate', methods=['POST'])
+def test_generate():
+    itext = request.form.get('itext', '')
+    test_type = request.form.get('test_type', 'objective')
+    noq = request.form.get('noq', 1)
+    
+    if test_type == 'objective':
+        objective_generator = ObjectiveTest(itext, noq)
+        questions, correct_answers, _, _ = objective_generator.generate_test()
+        question_answer_pairs = list(zip(questions, correct_answers))
+        return render_template('dashboard/quiz.html', questions=questions, correct_answers=correct_answers, question_answer_pairs=question_answer_pairs)
+    elif test_type == 'subjective':
+        subjective_generator = SubjectiveTest(itext, noq)
+        questions, correct_answers = subjective_generator.generate_test()
+        question_answer_pairs = list(zip(questions, correct_answers))
+        return render_template('dashboard/quiz_type2.html', questions=questions, correct_answers=correct_answers)
+
+@blueprint.route('/submit_answers', methods=['POST'])
+def submit_answers():
+    # Retrieve the correct answers based on the test type
+    test_type = request.form.get('test_type', 'objective')
+    if test_type == 'objective':
+        correct_answers = request.form.getlist('correct_answers')
+        total_questions = len(correct_answers)
+    elif test_type == 'subjective':
+        total_questions = int(request.form.get('total_questions'))
+        correct_answers = [request.form.get(f'correct_answer_{i}') for i in range(total_questions) if f'correct_answer_{i}' in request.form]
+
+    # Retrieve user answers and questions
+    user_answers = [request.form.get(f'user_answer_{i}') for i in range(total_questions)]
+    user_questions = [request.form.get(f'question_{i}') for i in range(total_questions)]
+
+    # Calculate the score
+    score = sum(user_answer == correct_answer for user_answer, correct_answer in zip(user_answers, correct_answers))
+
+    # Pass the score, total questions, correct answers, and user questions to the template
+    return render_template('dashboard/score.html', score=score, total_questions=total_questions, correct_answers=correct_answers, user_questions=user_questions, user_answers=user_answers)
+
+############################################################################################
+############################################################################################
+
+API_URL2 = "https://api-inference.huggingface.co/models/amjadfqs/swin-base-patch4-window7-224-in22k-finetuned-brain-tumor-final_13"
+headers2 = {"Authorization": "Bearer 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"}
+
+API_URL3 = "https://api-inference.huggingface.co/models/Locutusque/gpt2-large-medical"
+headers3 = {"Authorization": "Bearer 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"}
+
+def query3(payload):
+	response = requests.post(API_URL3, headers=headers3, json=payload)
+	return response.json()
+	
+def query2(filename):
+    with open(filename, "rb") as f:
+        data = f.read()
+    response = requests.post(API_URL2, headers=headers2, data=data)
+    return response.json()
+
+# output = query2("cats.jpg")
+
+# Your Flask route to handle file upload and JSON response
+import time
+@blueprint.route('/decttumor', methods=['GET', 'POST'])
+def decttumor():
+    tumor = None  # Initialize tumor outside the while loop
+    chart_image = None  # Initialize the chart image as None
+
+    if request.method == "POST":
+        if 'file' not in request.files:
+            return redirect(request.url)
+        file = request.files['file']
+        if file.filename == '':
+            return redirect(request.url)
+        if file and allowed_file(file.filename):
+            # Save the uploaded file
+            filename = os.path.join(app.config['UPLOAD_FOLDER'], file.filename)
+            file.save(filename)
+            while True:
+                response = query2(filename)
+                
+                if isinstance(response, list) and response== "{'error': 'Model amjadfqs/swin-base-patch4-window7-224-in22k-finetuned-brain-tumor-final_13 is currently loading', 'estimated_time': 20.0}":
+                    estimated_time = response[0].get("estimated_time", 20.0)
+                    time.sleep(estimated_time)  # Wait for the estimated time
+                else:
+                    one = "what is brain tumor " + extract_predicted_tumor(response)
+                    print (one)
+                    tumor = query3({
+                     "inputs": extract_predicted_tumor(response),
+                    })
+                    print(tumor)
+                    chart_image = create_chart(response)
+                    break
+
+    return render_template('dashboard/dector.html', chart_image=chart_image, tumor=tumor)  # Pass 'chart_image' to the template
+def extract_predicted_tumor(response):
+    try:
+        # Assuming that the predicted tumor label is the one with the highest score
+        tumor_with_highest_score = max(response, key=lambda x: x["score"])
+        predicted_tumor = tumor_with_highest_score["label"]
+        return predicted_tumor
+    except Exception as e:
+        # Handle any exceptions that may occur during extraction
+        return "Error extracting predicted tumor"
+def create_chart(response):
+    # Extract data from the JSON response
+    labels = [entry['label'] for entry in response]
+    scores = [entry['score'] for entry in response]
+
+    # Create a bar chart
+    plt.figure(figsize=(8, 6))
+    plt.bar(labels, scores)
+    plt.xlabel('Label')
+    plt.ylabel('Score')
+    plt.title('Chart Title')
+
+    # Save the chart as an image
+    img = BytesIO()
+    plt.savefig(img, format='png')
+    img.seek(0)
+
+    # Convert the image to base64 for embedding in HTML
+    chart_image = base64.b64encode(img.read()).decode('utf-8')
+
+    return chart_image
+
+############################################################################################
 
 
 

@@ -269,7 +269,30 @@
       </div>
       <div class="card card-body mx-3 mx-md-4 mt-n6">
         <div class="row gx-4 mb-2">
-          {{ plot_div|safe }}
+          <h3 class="h3 text-center">GENERATE YOUR OWN QUESTIONS & TEST YOURSELF</h3> 
+          <p class="text-center">Are you ready to put your health and medical knowledge to the test? HealthHub Quiz offers an engaging platform to challenge your understanding of various health-related topics. With the power of AI, we can generate an infinite number of questions, ensuring an ever-evolving quiz experience. Prepare to learn, have fun, and enhance your understanding of health matters.</p>
+          <div class="card-body">
+            <form method="POST" action="test_generate">
+              <div class="mb-4">
+                <div class="form-group">
+                    <label class="h6" for="exampleFormControlTextarea1">The Text</label>
+                      <textarea name="itext" class="form-control" placeholder="Give us the test you want to be tested on" rows="6" required></textarea>
+                  </div>    
+                  <div class="form-group">
+                      <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Choose Your Question Type</label>
+                      <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref" name="test_type" required>
+                          <option value="objective">Fill In The Blanks</option>
+                          <option value="subjective">Multiple choice questions</option>
+                      </select>
+                  </div>
+                  <div class="form-group">
+                    <label class="h6" for="exampleFormControlTextarea1">Number of Questions</label>
+                      <input type="number" name="noq" class="form-control" placeholder="Give Us The Number of Questions" min="1" required>
+                  </div>  
+<input type="submit" class="btn btn-primary" value="Generate">
+</form>
+</div>
+
 
         
         

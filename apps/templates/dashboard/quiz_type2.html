@@ -269,7 +269,32 @@
       </div>
       <div class="card card-body mx-3 mx-md-4 mt-n6">
         <div class="row gx-4 mb-2">
-          {{ plot_div|safe }}
+          <div class="card-body">
+            <form method="post" action="/submit_answers">
+              {% for i in range(questions|length) %}
+                  {% set question = questions[i] %}
+                  <div class="mb-4">
+                      <div class="form-group">
+                          <label class="h6">{{ question.Question }}</label>
+                          {% for j in range(question.Options|length) %}
+                              {% set option = question.Options[j] %}
+                              <div class="form-check">
+                                  <input type="radio" class="form-check-input" name="user_answer_{{ i }}" value="{{ option }}" id="option_{{ i }}_{{ j }}">
+                                  
+                                  
+                                  <label class="form-check-label" for="option_{{ i }}_{{ j }}">{{ option }}</label>
+                              </div>
+                          {% endfor %}
+                          <input type="hidden" name="correct_answers" value="{{ correct_answers[i] }}">
+                          <input type="hidden" name="question_{{ i }}" value="{{ questions[i] }}">
+                          
+                      </div>
+                  </div>
+              {% endfor %}
+              <input type="submit" class="btn btn-primary" value="Submit">
+          </form>
+        </div>
+
 
         
         
