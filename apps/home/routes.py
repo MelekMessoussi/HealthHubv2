@@ -459,16 +459,18 @@ def decttumor():
     chart_image = None  # Initialize the chart image as None
 
     if request.method == "POST":
-        if 'file' not in request.files:
-            return redirect(request.url)
-        file = request.files['file']
-        if file.filename == '':
-            return redirect(request.url)
-        if file and allowed_file(file.filename):
-            # Save the uploaded file
-            filename = os.path.join(app.config['UPLOAD_FOLDER'], file.filename)
-            file.save(filename)
+        
             while True:
+                if 'file' not in request.files:
+                    return redirect(request.url)
+                file = request.files['file']
+                 
+                if file.filename == '':
+                   return redirect(request.url)
+                if file and allowed_file(file.filename):
+                 # Save the uploaded file
+                     filename = os.path.join(app.config['UPLOAD_FOLDER'], file.filename)
+                file.save(filename)
                 response = query2(filename)
                 if isinstance(response, list) and extract_predicted_tumor(response)== "Error extracting predicted tumor":
                     estimated_time = response[0].get("estimated_time", 20.0)
