@@ -470,8 +470,7 @@ def decttumor():
             file.save(filename)
             while True:
                 response = query2(filename)
-                
-                if isinstance(response, list) and response== "{'error': 'Model amjadfqs/swin-base-patch4-window7-224-in22k-finetuned-brain-tumor-final_13 is currently loading', 'estimated_time': 20.0}":
+                if isinstance(response, list) and extract_predicted_tumor(response)== "Error extracting predicted tumor":
                     estimated_time = response[0].get("estimated_time", 20.0)
                     time.sleep(estimated_time)  # Wait for the estimated time
                 else:
