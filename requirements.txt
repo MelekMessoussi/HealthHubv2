@@ -32,5 +32,16 @@ pyspng
 # aimrocks
 albumentations
 nibabel
+numpy
+pydicom
+matplotlib
+scipy
+scikit-image
+scikit-learn
+plotly
+h5py
+nibabel
+SimpleITK
+opencv-python
 # flask_mysqldb
 # psycopg2-binary
