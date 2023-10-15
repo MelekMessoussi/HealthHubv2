@@ -31,6 +31,7 @@ import base64
 import plotly
 import plotly.graph_objects as go
 import numpy as np
+import random
 
 import nibabel as nib
 import os
@@ -62,7 +63,7 @@ G.to(device)
 
 
 API_URL = "https://api-inference.huggingface.co/models/yahyasmt/brain-tumor-3"
-headers = {"Authorization": "Bearer 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"}
+headers = {"Authorization": "Bearer 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"}
 
 
 app = Flask(__name__)
@@ -92,29 +93,43 @@ def index():
 @login_required
 def Dashboard():
     return render_template('/dashboard/index.html')
+# List of prompts
+prompts = [
+    "brain tumor mri",
+    "tumor mri",
+    "brain tumor mri scan",
+    "scan of a brain tumor mri",
+    "scan of a brain tumor",
+    "brain tumor",
+    # Add more prompts as needed
+]
 
 #########################################################################################
 @blueprint.route('/MRI_Generation',methods=['GET', 'POST'])
 def indeximage():
     if request.method == "POST":
-        prompt = request.form["input-text"]
-
+        # Select a random prompt from the list
+        prompt = random.choice(prompts)
+        print(prompt)
         image_bytes = query({
             "inputs": prompt,
+            "options": {"wait_for_model": True }
         })
         with open("./apps/static/assets_old/mdl/aa.jpeg", "wb") as image_file:
             image_file.write(image_bytes)
 
     return render_template('/dashboard/MRI_Generation.html')
-
 ########################################################################################
 @blueprint.route('/predict', methods=['POST'])
 def get_prediction():
     try:
-        Seed = int(request.form['Seed'])
-        noise_mode = request.form['noise_mode']
-        truncation_psi = float(request.form['truncation_psi'])
-        result_image = predict(Seed, noise_mode, truncation_psi)
+        # Generate random Seed
+        seed = random.randint(0, 65536)
+        # Choose a random noise mode from the list
+        noise_mode = "none"
+        # Generate a random truncation_psi 
+        truncation_psi = random.uniform(0.1, 2.0)
+        result_image = predict(seed, noise_mode, truncation_psi)
         
         # Convert the Image to a base64-encoded string
         result_image_base64 = image_to_base64(result_image)
@@ -455,37 +470,44 @@ def query2(filename):
 import time
 @blueprint.route('/decttumor', methods=['GET', 'POST'])
 def decttumor():
-    tumor = None  # Initialize tumor outside the while loop
-    chart_image = None  # Initialize the chart image as None
+    tumor = None
+    tumor2 = "Here we propose a first piste of reflection about the tumors ..."
+    zero = "Name of the tumor"
+    chart_image_path = None  # Initialize the chart image path as None
 
     if request.method == "POST":
-        
-            while True:
-                if 'file' not in request.files:
-                    return redirect(request.url)
-                file = request.files['file']
-                 
-                if file.filename == '':
-                   return redirect(request.url)
-                if file and allowed_file(file.filename):
-                 # Save the uploaded file
-                     filename = os.path.join(app.config['UPLOAD_FOLDER'], file.filename)
-                file.save(filename)
+        retries = 100
+        if 'file' not in request.files:
+            return redirect(request.url)
+        file = request.files['file']
+        if file.filename == '':
+            return redirect(request.url)
+        if file and allowed_file(file.filename):
+            filename = os.path.join(app.config['UPLOAD_FOLDER'], file.filename)
+            file.save(filename)
+            while retries > 0:
                 response = query2(filename)
-                if isinstance(response, list) and extract_predicted_tumor(response)== "Error extracting predicted tumor":
-                    estimated_time = response[0].get("estimated_time", 20.0)
-                    time.sleep(estimated_time)  # Wait for the estimated time
+                if extract_predicted_tumor(response) == "Error extracting predicted tumor":
+                    retries -= 1
                 else:
-                    one = "what is brain tumor " + extract_predicted_tumor(response)
-                    print (one)
-                    tumor = query3({
-                     "inputs": extract_predicted_tumor(response),
-                    })
-                    print(tumor)
+                    zero = extract_predicted_tumor(response)
+                    one = "what is brain tumor " + zero
+                    tumor = query3({"inputs": extract_predicted_tumor(response), "options": {"wait_for_model": True}}, )
+                    tumor2 = tumor[0]['generated_text']
                     chart_image = create_chart(response)
-                    break
 
-    return render_template('dashboard/dector.html', chart_image=chart_image, tumor=tumor)  # Pass 'chart_image' to the template
+        
+                    # Save the chart image as a PNG file
+                    with open("./apps/static/assets_old/mdl/chart.png", "wb") as image_file:
+                        image_file.write(chart_image)
+
+                    break
+        else:
+            return "File format not allowed"
+
+    # Provide the chart image path for downloading
+    return render_template('dashboard/dector.html',tumor=tumor2, name=zero)
+
 def extract_predicted_tumor(response):
     try:
         # Assuming that the predicted tumor label is the one with the highest score
@@ -495,6 +517,8 @@ def extract_predicted_tumor(response):
     except Exception as e:
         # Handle any exceptions that may occur during extraction
         return "Error extracting predicted tumor"
+import seaborn as sns
+
 def create_chart(response):
     # Extract data from the JSON response
     labels = [entry['label'] for entry in response]
@@ -505,7 +529,6 @@ def create_chart(response):
     plt.bar(labels, scores)
     plt.xlabel('Label')
     plt.ylabel('Score')
-    plt.title('Chart Title')
 
     # Save the chart as an image
     img = BytesIO()
@@ -513,10 +536,9 @@ def create_chart(response):
     img.seek(0)
 
     # Convert the image to base64 for embedding in HTML
-    chart_image = base64.b64encode(img.read()).decode('utf-8')
+    chart_image = img.read()
 
     return chart_image
-
 ############################################################################################
 
 

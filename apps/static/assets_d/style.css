@@ -18,8 +18,9 @@ body, html {
   float: left;
   height: 100%;
   color: white;
-  background: rgba(50,133, 241, 0.5);
+  background: #3285f1;
   box-shadow: 0 0 11px 1px rgba(0, 0, 0, 0.4);
+  border-radius: 20px;
 }
 .tdc-main-left-wrapper {
   height: 100%;
@@ -29,11 +30,11 @@ body, html {
   padding: 10px;
 }
 .tdc-main-left-wrapper-info .tdc-info-title {
-  font-size: 25px;
+  font-size: 20px;
   font-weight: bold;
 }
 .tdc-main-left-wrapper-info .tdc-info-description {
-  font-size: 20px;
+  font-size: 17px;
 }
 .tdc-main-right {
   position: relative;

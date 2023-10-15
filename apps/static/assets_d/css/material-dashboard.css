@@ -14612,7 +14612,7 @@ hr.horizontal {
   .navbar-vertical.navbar-expand-xs .navbar-collapse {
     display: block;
     overflow: auto;
-    height: calc(100vh - 360px); }
+     }
   .navbar-vertical.navbar-expand-xs > [class*="container"] {
     flex-direction: column;
     align-items: stretch;
@@ -17530,5 +17530,9 @@ pre[class*="language-"] {
 @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
   .ps {
     overflow: auto !important; } }
+
+.baby{
+  height: 12em;
+}
 
 /*# sourceMappingURL=material-dashboard.css.map */
