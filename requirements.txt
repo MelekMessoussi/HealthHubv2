@@ -28,8 +28,6 @@ glfw
 pyopengl
 imageio-ffmpeg
 pyspng
-# stylegan2_pytorch
-# aimrocks
 albumentations
 nibabel
 numpy
@@ -43,5 +41,4 @@ h5py
 nibabel
 SimpleITK
 opencv-python
-# flask_mysqldb
-# psycopg2-binary
+tensorflow

@@ -21,6 +21,9 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
   <!-- CSS Files -->
   <link id="pagestyle" href="/static/assets_d/css/material-dashboard.css?v=3.0.0" rel="stylesheet" />
+  <!--downthestreet-->
+  <link href="/static/assets_d/css/load.css" rel="stylesheet" />
+  <script src="/static/assets_d/js/load.js"></script>
   <style>
     .drop-zone {
 	max-width: 200px;
@@ -73,6 +76,8 @@
 </head>
 
 <body class="g-sidenav-show  bg-gray-200">
+  <div id="logo" class="logo"></div>
+
   <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3   bg-gradient-dark" id="sidenav-main">
     
     <hr class="horizontal light mt-0 mb-2">
@@ -120,7 +125,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white active " href="/3dtotal" style="background-color: #3285f1;">
+          <a class="nav-link text-white active " href="/3Dseg" style="background-color: #3285f1;">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">format_textdirection_r_to_l</i>
             </div>
@@ -160,9 +165,9 @@
     
    
     <div class="container-fluid px-2 px-md-4">
-      <div class="page-header border-radius-xl mt-4 baby" style="background-image: url('https://globetechcdn.com/mobile_medicalimaging/images/stories/articles/article_images/2019-07-24/DJB-335C.jpg');">
+      <div class="page-header border-radius-xl mt-4 baby" style="background-image: url('https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/cf7d3912237213.5628a1829b097.jpg');">
         <span class="mask opacity-5"></span>
-        <h1 style="color: white; padding-left: 23%">3D MRI From normal image
+        <h1 style="color: white; padding-left: 20%">3D visualisation From MRI image
         </h1>
       </div>
       <div class="row">
@@ -170,35 +175,45 @@
           <div class="card">
             <div class="card-header pb-0 px-3">
             </div>
-            <div class="card-body pt-4 p-3">
+            <div class="card-body pt-4 p-3" style="margin-left: 2em;">
                 <div>
                   <div >
-                    <h3 class="text-center">Upload Your brain image (jpg,png,jpeg...)</h3>
-                    <div class="justify-content-center">
-          
-                      <form action="/upload" method="post" enctype="multipart/form-data">
-                        <div class="card-body pb-2">
-                            <div class="row">
-                                <div class="col-md-6" style="padding-left: 20em;">
-                                    <label>File</label>
-                                    <div class="drop-zone">
-                                      <span class="drop-zone__prompt">Drop file here or click to upload</span>
-                                      <input type="file" name="file" class="drop-zone__input">
-                                    </div>
-                                </div>
-                                <div class="col-md-6 ps-md-2">
-                                    <label>Submit</label>
-                                    <div class="input-group" style="padding-top: 4em;">
-                                        <input id="uploadButton" type="submit" class="btn bg-gradient-dark mt-0 mb-0" value="Upload and Plot">
-                                    </div>
-                                </div>
-                            </div>
+                    <h3 class="text-center">Upload FLAIR and T1CE Images</h3>
+                    <form method="POST" action="/process" enctype="multipart/form-data">
+                      <div class="row">
+                        <div class="col-md-6" style="width: 30%;">
+                          <label>flair_image</label>
+                          <div class="drop-zone">
+                            <span class="drop-zone__prompt">Drop file here or click to upload</span>
+                            <input type="file" name="flair_image" class="drop-zone__input">
+                          </div>
                         </div>
+                        <div class="col-md-6" style="width: 30%;">
+                          <label>t1ce_image</label>
+                          <div class="drop-zone">
+                            <span class="drop-zone__prompt">Drop file here or click to upload</span>
+                            <input type="file" name="t1ce_image" class="drop-zone__input">
+                          </div>
+                        </div>
+                        <div class="col-md-6" style="width: 30%; margin-top: 5em;">
+                          <label>Submit</label>
+                          <div class="input-group">
+                            <input type="submit" value="Process Images" class="btn bg-gradient-dark mt-0 mb-0">
+                          </div>
+                        </div>
+                      </div>
                     </form>
                     <br>
-                  
-                    
-                    </div>
+                    <h4>3D Visualization : </h4>
+                    <div id="visualization"></div>
+                
+                <div class="global-box" id="global-stats">
+                       
+                            {% if plot %}
+                            {{ plot | safe }}
+                        {% endif %}
+                       
+                </div>
                   </div>
                 </div>
              
