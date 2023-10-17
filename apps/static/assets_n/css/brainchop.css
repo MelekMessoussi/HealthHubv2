@@ -6,7 +6,7 @@
 
 .grid-item {
   background-color: rgba(255, 255, 255, 0.8);
-  border: 0px solid rgba(0, 0, 0, 0.8);
+  border: 0px solid #3285f1;
   padding: 1vh;
   width: 40vw;
   height: auto;
@@ -32,9 +32,9 @@
       background: #f3f3f6a3!important;
       margin-left: 0!important;
       width: 100%!important;
-      color: black!important;
+      color: #3285f1!important;
       font-weight: bold;
-      border-left-color: black!important;
+      border-left-color: #3285f1!important;
 }
 
 .windowtitleclass {
@@ -196,4 +196,4 @@ label {
     color: white;
     font-family: Consolas, Baskerville, 'Segoe UI', sans-serif;
     font-size: 10px;
-}  
+}

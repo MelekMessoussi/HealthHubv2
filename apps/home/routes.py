@@ -73,7 +73,7 @@ def query(payload):
     return response.content
 
 UPLOAD_FOLDER = 'uploads'
-ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
+ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif','gz','zip'}
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 # Function to check if the file extension is allowed
@@ -233,7 +233,7 @@ def chat():
 
 ####################################################################################
 UPLOAD_FOLDER2 = 'nii'
-ALLOWED_EXTENSIONS2 = {'gz'}
+ALLOWED_EXTENSIONS2 = {'gz','zip'}
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER2
