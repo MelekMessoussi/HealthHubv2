@@ -2,7 +2,7 @@
 
 ![App Screenshot](image.png)
 
-<!-- [![Video Demo](https://img.youtube.com/vi/YOUR_VIDEO_ID/0.jpg)](https://www.youtube.com/watch?v=YOUR_VIDEO_ID) -->
+ [![Video Demo](https://img.youtube.com/vi/YOUR_VIDEO_ID/0.jpg)](https://www.youtube.com/watch?v=YOUR_VIDEO_ID) 
 
 
 ## Introduction
@@ -12,19 +12,38 @@ This is HealthHub, a web application designed for medical professionals and stud
 1. **Brain MRI Image Generation**:
    - Generates brain MRI images with tumors using a stable diffusion model and Dream Booth technology.
    - Generates brain MRI images of healthy brains with GAN for comparative analysis.
+   
+![mri image generator](apps/static/assets_old/mdl/ezgif.com-video-to-gif.gif)
 
 2. **Quiz Generator**:
    - Allows users to enter text or medical case descriptions.
    - Utilizes AI to automatically generate quizzes based on the input.
    - Calculates and displays quiz scores to assess the user's understanding.
 
-3. **3D Brain Visualization**:
-   - Provides an interactive 3D visualization of the brain for a more in-depth understanding of its anatomy and structures.
+uses .nii files to do the predection , brain and tumor 3D visualisation
 
-4. **Brain Tumor Detection**:
+
+3. **3D Brain Visualization from**:
+    It has 3 different categuories:
+   - Provides an interactive 3D visualization of the brain for a more in-depth understanding of its anatomy and structures.
+   - Can turn jpeg Brain images to 3D vizualisation
+   - C
+
+4. **3D Brain segmentation**:
+    - Utilizing .nii files
+    - 3D brain segmentation performs a comprehensive brain segmentation
+    - Extracts tumors
+    - Converts them into a three-dimensional format
+    - Allows for subsequent slicing
+
+5. **Brain Tumor Detection**:
    - Performs brain tumor detection with classification into different types.
    - Utilizes advanced machine learning algorithms for accurate diagnosis.
 
+6. **Medical Chatbot**:
+   - Acts as a virtual professor.
+   - Answers all questions related to healthcare.
+![mri image generator](apps/static/assets_old/mdl/chat_gif.gif)
 ## Getting Started
 
 ### Prerequisites
