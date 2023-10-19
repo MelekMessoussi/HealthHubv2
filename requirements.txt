@@ -42,3 +42,5 @@ nibabel
 SimpleITK
 opencv-python
 tensorflow
+nltk
+seaborn
