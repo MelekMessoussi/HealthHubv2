@@ -16,7 +16,7 @@ $ cd HealthHubv2
 
 ```
 $ python venv venv
-$ .\env\Scripts\activate
+$ .\venv\Scripts\activate
 $ pip install -r requirements.txt
 $ python -m nltk.downloader -d /usr/local/share/nltk_data all
 $ git clone https://github.com/NVlabs/stylegan3
