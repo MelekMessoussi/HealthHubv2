@@ -494,7 +494,7 @@ def decttumor():
                 else:
                     zero = extract_predicted_tumor(response)
                     one = "what is brain tumor " + zero
-                    tumor = query3({"inputs": extract_predicted_tumor(response), "options": {"wait_for_model": True}}, )
+                    tumor = query3({"inputs": extract_predicted_tumor(response), "options": {"wait_for_model": True}} )
                     tumor2 = tumor[0]['generated_text']
                     chart_image = create_chart(response)
 
