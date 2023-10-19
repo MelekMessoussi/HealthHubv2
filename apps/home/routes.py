@@ -43,6 +43,8 @@ import numpy as np
 from subjective import SubjectiveTest
 from objective import ObjectiveTest
 import nltk
+nltk.download('wordnet')
+
 #nltk.download("all")
 
 # os.system("git clone https://github.com/NVlabs/stylegan3")
