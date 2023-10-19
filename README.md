@@ -7,22 +7,23 @@
 This is HealthHub, a web application designed for medical professionals and students, providing a comprehensive set of tools and features for learning and practicing various aspects of medical imaging and diagnostics. Built with Flask, it offers the following key features:
 
 1. **Brain MRI Image Generation**:
-   - Generates brain MRI images with tumors using a stable diffusion model and Dream Booth technology.
-   - Generates brain MRI images of healthy brains with GAN for comparative analysis.
+    - Generates brain MRI images with tumors using a stable diffusion model and Dream Booth technology.
+    - Generates brain MRI images of healthy brains with GAN for comparative analysis.
    
 ![mri image generator](apps/static/assets_old/mdl/ezgif.com-video-to-gif.gif)
 
 2. **Quiz Generator**:
-   - Allows users to enter text or medical case descriptions.
-   - Utilizes AI to automatically generate quizzes based on the input.
-   - Calculates and displays quiz scores to assess the user's understanding.
+    - Allows users to enter text or medical case descriptions.
+    - Utilizes AI to automatically generate quizzes based on the input.
+    - Calculates and displays quiz scores to assess the user's understanding.
+  
 ![mri image generator](apps/static/assets_old/mdl/quiz_gif.gif)
 
 
 3. **3D Brain Visualization from**:
-  - One model for displaying 3D MRI in detail using JPEG format as input.
-  - Another model for tumor detection and 3D brain visualization using flair.nii and t1ce.nii files.
-  - Includes the visualization of tumors in the 3D brain model.
+    - One model for displaying 3D MRI in detail using JPEG format as input.
+    - Another model for tumor detection and 3D brain visualization using flair.nii and t1ce.nii files.
+    - Includes the visualization of tumors in the 3D brain model.
 
 4. **3D Brain segmentation**:
     - Utilizing .nii files.
@@ -32,12 +33,13 @@ This is HealthHub, a web application designed for medical professionals and stud
     - Allows for subsequent slicing.
 
 5. **Brain Tumor Detection**:
-   - Performs brain tumor detection with classification into different types.
-   - Utilizes advanced machine learning algorithms for accurate diagnosis.
+    - Performs brain tumor detection with classification into different types.
+    - Utilizes advanced machine learning algorithms for accurate diagnosis.
 
 6. **Medical Chatbot**:
-   - Acts as a virtual professor.
-   - Answers all questions related to healthcare.
+    - Acts as a virtual professor.
+    - Answers all questions related to healthcare.
+
 ![mri image generator](apps/static/assets_old/mdl/chat_gif.gif)
 ## Getting Started
 
