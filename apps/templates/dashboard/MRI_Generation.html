@@ -21,22 +21,19 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
   <!-- CSS Files -->
   <link id="pagestyle" href="/static/assets_d/css/material-dashboard.css?v=3.0.0" rel="stylesheet" />
+  <link href="/static/assets_d/css/load.css" rel="stylesheet" />
+  <script src="/static/assets_d/js/load.js"></script>
 </head>
 
 <body class="g-sidenav-show  bg-gray-200">
+  <div id="logo" class="logo"></div>
   <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3   bg-gradient-dark" id="sidenav-main">
-    <div class="sidenav-header">
-      <i class="fas fa-times p-3 cursor-pointer text-white opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
-      <a class="navbar-brand m-0" href=" https://demos.creative-tim.com/material-dashboard/pages/dashboard " target="_blank">
-        <img src="/static/assets_d/img/logo-ct.png" class="navbar-brand-img h-100" alt="main_logo">
-        <span class="ms-1 font-weight-bold text-white">HealthHub Dashboard</span>
-      </a>
-    </div>
+    
     <hr class="horizontal light mt-0 mb-2">
     <div class="collapse navbar-collapse  w-auto  max-height-vh-100" id="sidenav-collapse-main">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link text-white active bg-gradient-primary" href="/dashboard">
+          <a class="nav-link text-white" href="/dashboard" >
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">dashboard</i>
             </div>
@@ -47,20 +44,15 @@
           <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Generation</h6>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="/MRI_Generation">
-            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="material-icons opacity-10">table_view</i>
-            </div>
-            <span class="nav-link-text ms-1">MRI Brain tumor generation</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-white " href="./pages/tables.html">
+          <a class="nav-link text-white active" href="/MRI_Generation" style="background-color: #3285f1;">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">table_view</i>
             </div>
             <span class="nav-link-text ms-1">MRI Brain generation</span>
           </a>
+        </li>
+        <li class="nav-item mt-3">
+          <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Detection</h6>
         </li>
         <li class="nav-item">
           <a class="nav-link text-white " href="/decttumor">
@@ -68,6 +60,14 @@
               <i class="material-icons opacity-10">receipt_long</i>
             </div>
             <span class="nav-link-text ms-1">Brain tumor detection</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white " href="/MRISEG">
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="material-icons opacity-10">loop</i>
+            </div>
+            <span class="nav-link-text ms-1">3D Segmentation</span>
           </a>
         </li>
         <li class="nav-item mt-3">
@@ -82,17 +82,20 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="/3dtotal">
+          <a class="nav-link text-white " href="/3Dseg">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">format_textdirection_r_to_l</i>
             </div>
             <span class="nav-link-text ms-1">3D from MRI scan</span>
           </a>
         </li>
+        <li class="nav-item mt-3">
+          <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Test</h6>
+        </li>
         <li class="nav-item">
           <a class="nav-link text-white " href="/quiz">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="material-icons opacity-10">notifications</i>
+              <i class="material-icons opacity-10">quiz</i>
             </div>
             <span class="nav-link-text ms-1">Quiz</span>
           </a>
@@ -100,46 +103,28 @@
         <li class="nav-item mt-3">
           <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Account pages</h6>
         </li>
+        
         <li class="nav-item">
-          <a class="nav-link text-white " href="./pages/profile.html">
+          <a class="nav-link text-white " href="/logout">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="material-icons opacity-10">person</i>
+              <i class="material-icons opacity-10">logout</i>
             </div>
-            <span class="nav-link-text ms-1">Chat</span>
+            <span class="nav-link-text ms-1">logout</span>
           </a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link text-white " href="./pages/sign-in.html">
-            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="material-icons opacity-10">login</i>
-            </div>
-            <span class="nav-link-text ms-1">Sign In</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-white " href="./pages/sign-up.html">
-            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="material-icons opacity-10">assignment</i>
-            </div>
-            <span class="nav-link-text ms-1">Sign Up</span>
-          </a>
-        </li>
+       
       </ul>
     </div>
-    <div class="sidenav-footer position-absolute w-100 bottom-0 ">
-      <div class="mx-3">
-        <a class="btn bg-gradient-primary mt-4 w-100" href="https://www.creative-tim.com/product/material-dashboard-pro?ref=sidebarfree" type="button">Upgrade to pro</a>
-      </div>
-    </div>
+   
   </aside>
   <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
     <div>
     
    
     <div class="container-fluid px-2 px-md-4">
-      <div class="page-header min-height-300 border-radius-xl mt-4" style="background-image: url('https://images.unsplash.com/photo-1531512073830-ba890ca4eba2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');">
+      <div class="page-header border-radius-xl mt-4 baby" style="background-image: url('https://images.unsplash.com/photo-1559757175-0eb30cd8c063?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1931&q=80');">
         <span class="mask opacity-5"></span>
-        <h1 style="color: white; padding-left: 20%">MRI Brain Tumor Generation
+        <h1 style="color: white; padding-left: 23%">MRI Brain Tumor Generation
         </h1>
       </div>
       <div class="row">
@@ -158,7 +143,6 @@
                           <div class="mb-4">
                             <!-- <label>Enter a Prompt:</label> -->
                             <div class="input-group">
-                              <input type="text" id="input-text" name="input-text" required class="form-control" placeholder="Enter a Prompt:" >
                             </div>
                           </div>
                           <div class="row">
@@ -194,23 +178,15 @@
                   <div class="justify-content-center">
                     <h3 class="text-center">Generate a normal brain MRI</h3>
                     <form id="prediction-form">
-                      Seed: <input type="range" id="Seed" name="Seed" class="range w-full appearance-none transition rounded h-4 svelte-951xr6" min="0" max="65536" step="100"><br>
-        
-                Noise Mode: 
-                <input type="radio" id="const" name="noise_mode" value="const" checked style="margin-right: 5px;">
-                <label for="const">const</label>
-                <input type="radio" id="random" name="noise_mode" value="random" style="margin-right: 5px;">
-                <label for="random">random</label>
-                <input type="radio" id="none" name="noise_mode" value="none" style="margin-right: 5px;">
-                <label for="none">none</label><br>
-        
-                Truncation psi: <input type="range" id="truncation_psi" name="truncation_psi" step="0.05" min="0" max="2" value="1" class="range w-full appearance-none transition rounded h-4 svelte-951xr6"><br>
-        
-                <input class="btn bg-gradient-dark w-100" type="submit" value="Generate">
+                     
+                      <div class="spacing" style="padding-bottom: 3em;"></div>
+                <input class="btn bg-gradient-dark w-100" type="submit" value="Generate Image">
         
                   </form>
                   <br>
-          <img id="result_image"  alt="Generated Image" height="300px" width="300px" style="margin-left: 24%;">
+                  <img id="placeholderg" src="/static/assets_old/mdl/placeholder.jpg" alt="Generated Image" height="300px" width="300px" style="margin-left: 24%;">
+
+          <img style="display: none; margin-left: 24%;" id="result_image" src="/static/assets_old/mdl/placeholder.jpg" alt="Generated Image" height="300px" width="300px">
           <div class=" cadre2 w-100" style="margin-left: 40%;">
               <br>
               <button id="download_button" class="btn bg-gradient-dark"><i class="fa fa-download"></i> Download</button>
@@ -226,7 +202,11 @@
                 })
                 .then((response) => response.json())
                 .then((data) => {
+                  document.getElementById("placeholderg").style.display = 'none';
+                  document.getElementById("result_image").style.display = 'inline';
                     document.getElementById("result_image").src = "data:image/png;base64," + data.result_image;
+                    
+
                 });
             });
             const resultImage = document.getElementById('result_image');
@@ -261,36 +241,7 @@
       
     </div>
       <footer class="footer py-4  ">
-        <div class="container-fluid">
-          <div class="row align-items-center justify-content-lg-between">
-            <div class="col-lg-6 mb-lg-0 mb-4">
-              <div class="copyright text-center text-sm text-muted text-lg-start">
-                © <script>
-                  document.write(new Date().getFullYear())
-                </script>,
-                made with <i class="fa fa-heart"></i> by
-                <a href="https://www.creative-tim.com" class="font-weight-bold" target="_blank">Creative Tim</a>
-                for a better web.
-              </div>
-            </div>
-            <div class="col-lg-6">
-              <ul class="nav nav-footer justify-content-center justify-content-lg-end">
-                <li class="nav-item">
-                  <a href="https://www.creative-tim.com" class="nav-link text-muted" target="_blank">Creative Tim</a>
-                </li>
-                <li class="nav-item">
-                  <a href="https://www.creative-tim.com/presentation" class="nav-link text-muted" target="_blank">About Us</a>
-                </li>
-                <li class="nav-item">
-                  <a href="https://www.creative-tim.com/blog" class="nav-link text-muted" target="_blank">Blog</a>
-                </li>
-                <li class="nav-item">
-                  <a href="https://www.creative-tim.com/license" class="nav-link pe-0 text-muted" target="_blank">License</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
+        
       </footer>
     </div>
   </main>
@@ -316,6 +267,8 @@
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="/static/assets_d/js/material-dashboard.min.js?v=3.0.0"></script>
+  <script src="/static/assets_d/js/load.js"></script>
+
 </body>
 
 </html>
