@@ -183,10 +183,9 @@
         }
         
         .btn {
-            background-color: var(--blue);
-            background-image: linear-gradient(90deg, var(--blue) 0%, var(--lightblue) 74%);
+            background-color: #3285f1;
             border-radius: 20px;
-            border: 1px solid var(--blue);
+            border: 1px solid #3285f1;
             color: var(--white);
             cursor: pointer;
             font-size: 0.8rem;
@@ -241,19 +240,92 @@
                 z-index: 5;
             }
         }
-        
+        /* CSS for the modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background-color: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+}
+
+.close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 10px;
+    cursor: pointer;
+}
+
     </style>
     <body>
-        <div class="container right-panel-active">
-            <!-- Sign Up -->
-            <div class="container__form container--signup">
-                <p class="mb-0">
+        <div class="modal" id="myModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Modal Title</h5>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <p class="mb-0">
+                            {% if msg %}
+                                {{ msg | safe }}
+                            {% else %}
+                                Add your credentials
+                            {% endif %}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="modal" class="modal">
+            <div class="modal-content">
+                <span id="closeModalBtn" class="close">&times;</span>
+                <p class="mb-0" id="modalContent">
                     {% if msg %}
                         {{ msg | safe }}
                     {% else %}
                         Add your credentials
-                    {% endif %}                
-                  </p>
+                    {% endif %}
+                </p>
+            </div>
+        </div>
+        <script>
+            // JavaScript to show and hide the modal
+var modal = document.getElementById("modal");
+var modalContent = document.getElementById("modalContent");
+var openModalBtn = document.getElementById("openModalBtn");
+var closeModalBtn = document.getElementById("closeModalBtn");
+
+openModalBtn.onclick = function() {
+    modal.style.display = "block";
+};
+
+closeModalBtn.onclick = function() {
+    modal.style.display = "none";
+};
+
+// You can update the modal content dynamically
+function updateModalContent(msg) {
+    modalContent.innerHTML = msg;
+}
+
+        </script>        
+        <div class="container right-panel-active">
+            <!-- Sign Up -->
+            <div class="container__form container--signup">
+             
                 <form  class="form" id="form1" method="post">
                     {{ form1.hidden_tag() }}
                     <h2 class="form__title">Sign Up</h2>
@@ -271,13 +343,7 @@
             <!-- Sign In -->
            
             <div class="container__form container--signin">
-                <p class="mb-0">
-                    {% if msg %}
-                        {{ msg | safe }}
-                    {% else %}
-                        Add your credentials
-                    {% endif %}                 
-                  </p>
+                
                 <form class="form" role="form" id="form2" method="post">
                     {{ form2.hidden_tag() }}
                     <h2 class="form__title">Sign In</h2>

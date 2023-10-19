@@ -1,0 +1,344 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="apple-touch-icon" sizes="76x76" href="/static/assets_d/img/apple-icon.png">
+  <link rel="icon" type="image/png" href="/static/assets_d/img/favicon.png">
+  <title>
+    HealthHub
+  </title>
+  <!--     Fonts and icons     -->
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
+  <!-- Nucleo Icons -->
+  <link href="/static/assets_d/css/nucleo-icons.css" rel="stylesheet" />
+  <link href="/static/assets_d/css/nucleo-svg.css" rel="stylesheet" />
+  <!-- Font Awesome Icons -->
+  <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+  <!-- Material Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+  <!-- CSS Files -->
+  <link id="pagestyle" href="/static/assets_d/css/material-dashboard.css?v=3.0.0" rel="stylesheet" />
+  <!--downthestreet-->
+  <link href="/static/assets_d/css/load.css" rel="stylesheet" />
+  <script src="/static/assets_d/js/load.js"></script>
+  <style>
+    .drop-zone {
+	max-width: 200px;
+	height: 200px;
+	padding: 25px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	font-family: "Quicksand", sans-serif;
+	font-weight: 500;
+	font-size: 20px;
+	cursor: pointer;
+	color: #cccccc;
+	border: 4px dashed #3285f1;
+	border-radius: 10px;
+}
+
+.drop-zone--over {
+	border-style: solid;
+}
+
+.drop-zone__input {
+	display: none;
+}
+
+.drop-zone__thumb {
+	width: 100%;
+	height: 100%;
+	border-radius: 10px;
+	overflow: hidden;
+	background-color: #cccccc;
+	background-size: cover;
+	position: relative;
+}
+
+.drop-zone__thumb::after {
+	content: attr(data-label);
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	padding: 5px 0;
+	color: #ffffff;
+	background: rgba(0, 0, 0, 0.75);
+	font-size: 14px;
+	text-align: center;
+}
+  </style>
+</head>
+
+<body class="g-sidenav-show  bg-gray-200">
+  <div id="logo" class="logo"></div>
+  <div id="logo" class="logo"></div>
+
+  <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3   bg-gradient-dark" id="sidenav-main">
+    
+    <hr class="horizontal light mt-0 mb-2">
+    <div class="collapse navbar-collapse  w-auto  max-height-vh-100" id="sidenav-collapse-main">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link text-white" href="/dashboard" >
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="material-icons opacity-10">dashboard</i>
+            </div>
+            <span class="nav-link-text ms-1">Dashboard</span>
+          </a>
+        </li>
+        <li class="nav-item mt-3">
+          <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Generation</h6>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white " href="/MRI_Generation" >
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="material-icons opacity-10">table_view</i>
+            </div>
+            <span class="nav-link-text ms-1">MRI Brain generation</span>
+          </a>
+        </li>
+        <li class="nav-item mt-3">
+          <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Detection</h6>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" href="/decttumor">
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="material-icons opacity-10">receipt_long</i>
+            </div>
+            <span class="nav-link-text ms-1">Brain tumor detection</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white " href="/MRISEG">
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="material-icons opacity-10">loop</i>
+            </div>
+            <span class="nav-link-text ms-1">3D Segmentation</span>
+          </a>
+        </li>
+        <li class="nav-item mt-3">
+          <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">MRI to 3D visualization</h6>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" href="/3D" >
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="material-icons opacity-10">view_in_ar</i>
+            </div>
+            <span class="nav-link-text ms-1">3D MRI From normal image</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white active " href="/3Dseg" style="background-color: #3285f1;">
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="material-icons opacity-10">format_textdirection_r_to_l</i>
+            </div>
+            <span class="nav-link-text ms-1">3D from MRI scan</span>
+          </a>
+        </li>
+        <li class="nav-item mt-3">
+          <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Test</h6>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white " href="/quiz">
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="material-icons opacity-10">quiz</i>
+            </div>
+            <span class="nav-link-text ms-1">Quiz</span>
+          </a>
+        </li>
+        <li class="nav-item mt-3">
+          <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Account pages</h6>
+        </li>
+        
+        <li class="nav-item">
+          <a class="nav-link text-white " href="/logout">
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="material-icons opacity-10">logout</i>
+            </div>
+            <span class="nav-link-text ms-1">logout</span>
+          </a>
+        </li>
+       
+      </ul>
+    </div>
+   
+  </aside>
+  <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
+    <div>
+    
+   
+    <div class="container-fluid px-2 px-md-4">
+      <div class="page-header border-radius-xl mt-4 baby" style="background-image: url('https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/cf7d3912237213.5628a1829b097.jpg');">
+        <span class="mask opacity-5"></span>
+        <h1 style="color: white; padding-left: 20%">3D visualisation From MRI image
+        </h1>
+      </div>
+      <div class="row">
+        <div class="mt-4">
+          <div class="card">
+            <div class="card-header pb-0 px-3">
+            </div>
+            <div class="card-body pt-4 p-3" style="margin-left: 2em;">
+                <div>
+                  <div >
+                    <h3 class="text-center">Upload FLAIR and T1CE Images</h3>
+                    <form method="POST" action="/process" enctype="multipart/form-data">
+                      <div class="row">
+                        <div class="col-md-6" style="width: 30%;">
+                          <label>flair_image</label>
+                          <div class="drop-zone">
+                            <span class="drop-zone__prompt">Drop file here or click to upload</span>
+                            <input type="file" name="flair_image" class="drop-zone__input">
+                          </div>
+                        </div>
+                        <div class="col-md-6" style="width: 30%;">
+                          <label>t1ce_image</label>
+                          <div class="drop-zone">
+                            <span class="drop-zone__prompt">Drop file here or click to upload</span>
+                            <input type="file" name="t1ce_image" class="drop-zone__input">
+                          </div>
+                        </div>
+                        <div class="col-md-6" style="width: 30%; margin-top: 5em;">
+                          <label>Submit</label>
+                          <div class="input-group">
+                            <input type="submit" value="Process Images" class="btn bg-gradient-dark mt-0 mb-0">
+                          </div>
+                        </div>
+                      </div>
+                    </form>
+                    <br>
+                    <h4>3D Visualization : </h4>
+                    <div id="visualization"></div>
+                
+                <div class="global-box" id="global-stats">
+                       
+                            {% if plot %}
+                            {{ plot | safe }}
+                        {% endif %}
+                       
+                </div>
+                  </div>
+                </div>
+             
+             
+          </div>
+        </div>
+        
+      </div>
+
+      
+      <footer class="footer py-4  ">
+        
+      </footer>
+    </div>
+  </main>
+</div>
+<script>
+  document.querySelectorAll(".drop-zone__input").forEach((inputElement) => {
+    const dropZoneElement = inputElement.closest(".drop-zone");
+  
+    dropZoneElement.addEventListener("click", (e) => {
+      inputElement.click();
+    });
+  
+    inputElement.addEventListener("change", (e) => {
+      if (inputElement.files.length) {
+        updateThumbnail(dropZoneElement, inputElement.files[0]);
+      }
+    });
+  
+    dropZoneElement.addEventListener("dragover", (e) => {
+      e.preventDefault();
+      dropZoneElement.classList.add("drop-zone--over");
+    });
+  
+    ["dragleave", "dragend"].forEach((type) => {
+      dropZoneElement.addEventListener(type, (e) => {
+        dropZoneElement.classList.remove("drop-zone--over");
+      });
+    });
+  
+    dropZoneElement.addEventListener("drop", (e) => {
+      e.preventDefault();
+  
+      if (e.dataTransfer.files.length) {
+        inputElement.files = e.dataTransfer.files;
+        updateThumbnail(dropZoneElement, e.dataTransfer.files[0]);
+      }
+  
+      dropZoneElement.classList.remove("drop-zone--over");
+     
+    });
+  });
+  
+  /**
+   * Updates the thumbnail on a drop zone element.
+   *
+   * @param {HTMLElement} dropZoneElement
+   * @param {File} file
+   */
+  function updateThumbnail(dropZoneElement, file) {
+    let thumbnailElement = dropZoneElement.querySelector(".drop-zone__thumb");
+  
+    // First time - remove the prompt
+    if (dropZoneElement.querySelector(".drop-zone__prompt")) {
+      dropZoneElement.querySelector(".drop-zone__prompt").remove();
+    }
+  
+    // First time - there is no thumbnail element, so lets create it
+    if (!thumbnailElement) {
+      thumbnailElement = document.createElement("div");
+      thumbnailElement.classList.add("drop-zone__thumb");
+      dropZoneElement.appendChild(thumbnailElement);
+    }
+  
+    thumbnailElement.dataset.label = file.name;
+  
+    // Show thumbnail for image files
+    if (file.type.startsWith("image/")) {
+      const reader = new FileReader();
+  
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        thumbnailElement.style.backgroundImage = `url('${reader.result}')`;
+        
+      };
+    } else {
+      thumbnailElement.style.backgroundImage = null;
+    }
+  }
+  
+</script>
+
+  <script src="https://cdn.botpress.cloud/webchat/v1/inject.js"></script>
+  <script src="https://mediafiles.botpress.cloud/a0819538-913f-47d7-8e2f-479f3bca2e09/webchat/config.js" defer></script>
+
+  <!--   Core JS Files   -->
+  <script src="/static/assets_d/js/core/popper.min.js"></script>
+  <script src="/static/assets_d/js/core/bootstrap.min.js"></script>
+  <script src="/static/assets_d/js/plugins/perfect-scrollbar.min.js"></script>
+  <script src="/static/assets_d/js/plugins/smooth-scrollbar.min.js"></script>
+  <script>
+    var win = navigator.platform.indexOf('Win') > -1;
+    if (win && document.querySelector('#sidenav-scrollbar')) {
+      var options = {
+        damping: '0.5'
+      }
+      Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
+    }
+  </script>
+  <!-- Github buttons -->
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+  <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
+  <script src="/static/assets_d/js/material-dashboard.min.js?v=3.0.0"></script>
+  <script src="/static/assets_d/js/load.js"></script>
+
+</body>
+
+</html>

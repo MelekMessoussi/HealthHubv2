@@ -28,9 +28,17 @@ glfw
 pyopengl
 imageio-ffmpeg
 pyspng
-# stylegan2_pytorch
-# aimrocks
 albumentations
 nibabel
-# flask_mysqldb
-# psycopg2-binary
+numpy
+pydicom
+matplotlib
+scipy
+scikit-image
+scikit-learn
+plotly
+h5py
+nibabel
+SimpleITK
+opencv-python
+tensorflow
