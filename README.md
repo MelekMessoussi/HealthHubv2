@@ -18,7 +18,6 @@ $ cd HealthHubv2
 $ python venv venv
 $ .\venv\Scripts\activate
 $ pip install -r requirements.txt
-$ git clone https://github.com/NVlabs/stylegan3
 
 and you should install the Gan model from here https://huggingface.co/spaces/yahyasmt/Brain-MR-Image-Generation-with-StyleGAN/tree/main
 you copy the file brainmrigan.pkl and make it in to HealthHubv2 folder
