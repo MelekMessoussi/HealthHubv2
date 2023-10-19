@@ -2,9 +2,6 @@
 
 ![App Screenshot](image.png)
 
- [![Video Demo](https://img.youtube.com/vi/YOUR_VIDEO_ID/0.jpg)](https://www.youtube.com/watch?v=YOUR_VIDEO_ID) 
-
-
 ## Introduction
 
 This is HealthHub, a web application designed for medical professionals and students, providing a comprehensive set of tools and features for learning and practicing various aspects of medical imaging and diagnostics. Built with Flask, it offers the following key features:
@@ -19,22 +16,20 @@ This is HealthHub, a web application designed for medical professionals and stud
    - Allows users to enter text or medical case descriptions.
    - Utilizes AI to automatically generate quizzes based on the input.
    - Calculates and displays quiz scores to assess the user's understanding.
-
-uses .nii files to do the predection , brain and tumor 3D visualisation
+![mri image generator](apps/static/assets_old/mdl/quiz_gif.gif)
 
 
 3. **3D Brain Visualization from**:
-    It has 3 different categuories:
-   - Provides an interactive 3D visualization of the brain for a more in-depth understanding of its anatomy and structures.
-   - Can turn jpeg Brain images to 3D vizualisation
-   - C
+  - One model for displaying 3D MRI in detail using JPEG format as input.
+  - Another model for tumor detection and 3D brain visualization using flair.nii and t1ce.nii files.
+  - Includes the visualization of tumors in the 3D brain model.
 
 4. **3D Brain segmentation**:
-    - Utilizing .nii files
-    - 3D brain segmentation performs a comprehensive brain segmentation
-    - Extracts tumors
-    - Converts them into a three-dimensional format
-    - Allows for subsequent slicing
+    - Utilizing .nii files.
+    - 3D brain segmentation performs a comprehensive brain segmentation.
+    - Extracts tumors.
+    - Converts them into a three-dimensional format.
+    - Allows for subsequent slicing.
 
 5. **Brain Tumor Detection**:
    - Performs brain tumor detection with classification into different types.
