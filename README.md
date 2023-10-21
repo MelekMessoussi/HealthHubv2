@@ -4,7 +4,7 @@
 
 ## Introduction
 
-This is HealthHub, a web application designed for medical professionals and students, providing a comprehensive set of tools and features for learning and practicing various aspects of medical imaging and diagnostics. Built with Flask, it offers the following key features:
+This is HealthHub , a web application designed for medical professionals and students, providing a comprehensive set of tools and features for learning and practicing various aspects of medical imaging and diagnostics. Built with Flask, it offers the following key features:
 
 1. **Brain MRI Image Generation**:
     - Generates brain MRI images with tumors using a stable diffusion model and Dream Booth technology.
