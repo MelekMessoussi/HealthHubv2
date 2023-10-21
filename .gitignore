@@ -15,7 +15,7 @@ __pycache__/
 env
 venv
 brainmrigan.pkl
-apps/brain_dicom/*.
+apps/brain_dicom/
 
 # other
 .DS_Store
