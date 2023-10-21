@@ -15,7 +15,8 @@ __pycache__/
 env
 venv
 brainmrigan.pkl
-apps/brain_dicom/
+apps/brain_dicom/*.dcm
+
 
 # other
 .DS_Store
@@ -32,4 +33,5 @@ package-lock.json
 apps/static/assets/node_modules
 apps/static/assets/yarn.lock
 apps/static/assets/.temp
+
 
