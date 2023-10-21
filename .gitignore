@@ -15,7 +15,6 @@ __pycache__/
 env
 venv
 brainmrigan.pkl
-apps/brain_dicom/*.dcm
 
 
 # other
