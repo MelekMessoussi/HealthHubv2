@@ -23,7 +23,7 @@ This is HealthHub , a web application designed for medical professionals and stu
 3. **3D Brain Visualization from**:
     - One model for displaying 3D MRI in detail using JPEG format as input.
     - Another model for tumor detection and 3D brain visualization using flair.nii and t1ce.nii files.
-    - Includes the visualization of tumors in the 3D brain model.
+    - Includes the visualization of tumors in 3D with python.
 
 4. **3D Brain segmentation**:
     - Utilizing .nii files.
